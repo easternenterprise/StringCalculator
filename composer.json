@@ -1,0 +1,20 @@
+{
+    "name": "easternenterprise/string-calculator",
+    "description": "String calculator demo",
+    "authors": [
+        {
+            "name": "Krish Damani",
+            "email": "k.damani@easternenterprise.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Eastern\\": "src/Eastern"}
+    },
+    "autoload-dev": {
+        "psr-4": {"Eastern\\": "tests/Eastern"}
+    },
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "~4.8"
+    }
+}
