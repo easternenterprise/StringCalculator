@@ -75,6 +75,15 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @expectedException \InvalidArgumentException
+     * @expectedExceptionMessage Negatives not allowed : -1,-5
+     */
+    public function  testAddWithStringParameterWithNegativeNumbersThrowException()
+    {
+        $this->calculator->add('-1,3,2,-5');
+    }
+
+    /**
      * Data provider to provide an array with expected result and test data.
      *
      * @return array
@@ -88,7 +97,7 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
             [18, '2,4,5,7'],
             [5, '2\n3'],
             [3, '//;\n1;2'],
-            [3, '//-\n1-2']
+            [3, '//-\n1-2'],
         ];
     }
 

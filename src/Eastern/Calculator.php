@@ -55,6 +55,34 @@ class Calculator
             throw new \InvalidArgumentException('Parameters string must contain numbers');
         }
 
-        return array_sum($numbersArray);
+        if ($this->checkForNegativeNumbers($numbersArray)) {
+            return array_sum($numbersArray);
+        }
+    }
+
+    /**
+     * Performs check if the numbers contain negative numbers
+     *
+     * @param array $numbersArray
+     * @return bool
+     * @throws InvalidArgumentException
+     */
+    private function checkForNegativeNumbers($numbersArray)
+    {
+        $negativeNumbers = [];
+
+        array_map(function($value) use (&$negativeNumbers){
+            if ($value < 0) {
+                $negativeNumbers[] = $value;
+            }
+            return $negativeNumbers;
+        }, $numbersArray);
+
+        if (count($negativeNumbers) > 0) {
+            throw new \InvalidArgumentException(sprintf('Negatives not allowed : %s', implode(',', $negativeNumbers)));
+        }
+
+        return true;
+
     }
 }
