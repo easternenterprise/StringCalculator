@@ -1,8 +1,6 @@
 <?php
 namespace Eastern;
 
-use Eastern\Calculator;
-
 class CalculatorTest extends \PHPUnit_Framework_TestCase
 {
     /** @var Calculator $calculator */
@@ -55,7 +53,7 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
      */
     public function  testAddWithNonStringParameterThrowException()
     {
-        $this->calculator->add(5, 'Integer parameter do not throw error');
+        $this->calculator->add(5);
     }
 
     /**
@@ -63,6 +61,31 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddWithNonNumbersThrowException()
     {
-        $this->calculator->add('1,a', 'Invalid parameter do not throw exception');
+        $this->calculator->add('1,a');
+    }
+
+    /**
+     * @dataProvider numberDataProvider
+     */
+    public function testAddCanSumMultipleNumbers($expectedResult, $numbers)
+    {
+        $result = $this->calculator->add($numbers);
+
+        $this->assertSame($expectedResult, $result, 'Sum for multiple numbers is not returning expected result');
+    }
+
+    /**
+     * Data provider to provide an array with expected result and test data.
+     *
+     * @return array
+     */
+    public function numberDataProvider()
+    {
+        return [
+            [0, ''],
+            [3, '1,2'],
+            [8, '2,5,1'],
+            [18, '2,4,5,7'],
+        ];
     }
 }

@@ -1,7 +1,6 @@
 <?php
 
 namespace Eastern;
-use Doctrine\Instantiator\Exception\InvalidArgumentException;
 
 /**
  * Class Calculator
