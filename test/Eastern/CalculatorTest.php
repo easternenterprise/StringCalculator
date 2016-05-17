@@ -86,6 +86,25 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
             [3, '1,2'],
             [8, '2,5,1'],
             [18, '2,4,5,7'],
+            [5, '2\n3'],
+
+        ];
+    }
+
+    /**
+     * @dataProvider badNumberDataProvider
+     * @expectedException \InvalidArgumentException
+     */
+    public function testAddWithExtraCommaThrowsException($numbers)
+    {
+        $this->calculator->add($numbers);
+    }
+
+    public function badNumberDataProvider()
+    {
+        return [
+            ['1,\n'],
+            ['1,'],
         ];
     }
 }

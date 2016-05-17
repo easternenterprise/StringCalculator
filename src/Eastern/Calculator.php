@@ -25,6 +25,7 @@ class Calculator
             throw new \InvalidArgumentException('Parameters must be a string');
         }
 
+        $numbers = str_replace('\n', ',', $numbers);
         $numbersArray = explode(",", $numbers);
 
         if (array_filter($numbersArray, 'is_numeric') !== $numbersArray) {
