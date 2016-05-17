@@ -87,7 +87,8 @@ class CalculatorTest extends \PHPUnit_Framework_TestCase
             [8, '2,5,1'],
             [18, '2,4,5,7'],
             [5, '2\n3'],
-
+            [3, '//;\n1;2'],
+            [3, '//-\n1-2']
         ];
     }
 
